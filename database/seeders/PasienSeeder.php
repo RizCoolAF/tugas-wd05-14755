@@ -4,25 +4,30 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Pasien;
+use App\Models\User;
 
 class PasienSeeder extends Seeder
 {
     public function run(): void
     {
-        Pasien::create([
-            'nama' => 'Muhammad Abil',
-            'alamat' => 'Jl. Merdeka No. 1',
-            'no_hp' => '081234567890',
-        ]);
+        $pasienUsers = User::where('role', 'pasien')->get();
 
-        Pasien::create([
-            'nama' => 'Wildan Syachviar',
-            'alamat' => 'Jl. Pahlawan No. 2',
-            'no_hp' => '082345678901',
-        ]);
+        $data = [];
+        $i = 1;
 
-        foreach ($pasiens as $pasien) {
-            Pasien::create($pasien);
+        foreach ($pasienUsers as $user) {
+            $data[] = [
+                'user_id' => $user->id,
+                'nama'    => $user->name,
+                'email'   => $user->email,
+                'no_rm'   => 'P00' . $i,
+                'alamat'  => fake()->address(),
+                'no_hp'   => '0812' . rand(10000000, 99999999),
+                'no_ktp'  => '32111111111100' . str_pad($i, 2, '0', STR_PAD_LEFT),
+            ];
+            $i++;
         }
+
+        Pasien::insert($data);
     }
 }

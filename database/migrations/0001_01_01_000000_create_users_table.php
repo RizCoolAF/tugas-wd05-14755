@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('alamat', 255)->nullable();
-            $table->string('no_hp')->nullable();
-            $table->string('email', 50)->unique();
-            $table->string('role', 50);
-            $table->string('password');
+            $table->string('name');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -50,4 +48,3 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
-

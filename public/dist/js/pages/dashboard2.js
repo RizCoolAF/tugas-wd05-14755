@@ -19,7 +19,7 @@ $(function () {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
       {
-        label: 'Digital Goods',
+        label: 'Medicine',
         backgroundColor: 'rgba(60,141,188,0.9)',
         borderColor: 'rgba(60,141,188,0.8)',
         pointRadius: false,
@@ -30,7 +30,7 @@ $(function () {
         data: [28, 48, 40, 19, 86, 27, 90]
       },
       {
-        label: 'Electronics',
+        label: 'Supporting Goods',
         backgroundColor: 'rgba(210, 214, 222, 1)',
         borderColor: 'rgba(210, 214, 222, 1)',
         pointRadius: false,
